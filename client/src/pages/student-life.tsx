@@ -7,8 +7,18 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { CheckCircle, ChevronRight } from "lucide-react";
+import { useState } from "react";
+import ApplyModal from "../components/registration/apply-modal"; 
 
 export default function StudentLife() {
+  // Add state for modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Function to open the modal
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="bg-gray-50">
       {/* Hero Section */}
@@ -34,7 +44,7 @@ export default function StudentLife() {
             <p className="text-gray-600 mb-6">
               Our partner universities provide modern facilities and supportive environments that help international students thrive both academically and socially. You'll join a community of students from around the world, creating connections that last a lifetime.
             </p>
-            <Button className="bg-gradient-primary">
+            <Button className="bg-gradient-primary" onClick={handleOpenModal}>
               Apply for Admission
             </Button>
           </div>
@@ -199,8 +209,8 @@ export default function StudentLife() {
           <div className="grid md:grid-cols-3 gap-8">
             <Card>
               <CardContent className="p-0">
-                <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Taj Mahal" className="w-full h-48 object-cover" />
-                <div className="p-6">
+              <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Taj Mahal" className="w-full h-48 object-cover" />
+              <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Historical Wonders</h3>
                   <p className="text-gray-600 mb-4">
                     Visit iconic landmarks like the Taj Mahal, ancient temples, and historical forts during weekend trips and semester breaks.
@@ -211,8 +221,8 @@ export default function StudentLife() {
             
             <Card>
               <CardContent className="p-0">
-                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Indian cuisine" className="w-full h-48 object-cover" />
-                <div className="p-6">
+              <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Indian cuisine" className="w-full h-48 object-cover" />
+              <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Culinary Adventures</h3>
                   <p className="text-gray-600 mb-4">
                     Experience India's diverse cuisines, from spicy street food to regional delicacies and traditional cooking methods.
@@ -223,8 +233,8 @@ export default function StudentLife() {
             
             <Card>
               <CardContent className="p-0">
-                <img src="https://miro.medium.com/v2/resize:fit:1400/0*5Z7Umpd1EuY7tsvM" alt="Cultural event" className="w-full h-48 object-cover" />
-                <div className="p-6">
+              <img src="https://miro.medium.com/v2/resize:fit:1400/0*5Z7Umpd1EuY7tsvM" alt="Cultural event" className="w-full h-48 object-cover" />
+              <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Cultural Immersion</h3>
                   <p className="text-gray-600 mb-4">
                     Participate in yoga, meditation, music, dance, and art workshops to experience India's rich cultural heritage.
@@ -235,6 +245,7 @@ export default function StudentLife() {
           </div>
         </div>
       </div>
+      <ApplyModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }

@@ -46,6 +46,12 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
   // Parallax effect calculation
   const translateY = scrollY * 0.3; // Adjust the multiplier for more/less effect
 
+  // Handle button clicks with preventDefault to avoid navigation
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault(); // Prevent any default navigation
+    onExploreClick(); // Call the provided callback to open the modal
+  };
+
   return (
     <div className="relative bg-gray-900 overflow-hidden" style={{ height: "90vh" }}>
       {/* Background images with transition effect */}
@@ -100,7 +106,7 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
               {/* Action buttons with hover effects */}
               <div className={`flex flex-wrap gap-4 ${loaded ? 'animate-slide-in-from-bottom' : 'opacity-0'} delay-500`}>
                 <Button 
-                  onClick={onExploreClick}
+                  onClick={handleButtonClick}
                   className="group relative inline-flex items-center px-8 py-6 text-base font-medium rounded-lg text-white bg-gradient-to-r from-orange-500 to-orange-700 hover:from-orange-600 hover:to-orange-800 shadow-lg shadow-orange-500/30 hover:shadow-orange-500/50 transition-all duration-300"
                 >
                   Apply Now
@@ -108,7 +114,7 @@ export default function HeroSection({ onExploreClick }: HeroSectionProps) {
                 </Button>
                 
                 <Button 
-                  onClick={onExploreClick}
+                  onClick={handleButtonClick}
                   variant="outline" 
                   className="relative overflow-hidden inline-flex items-center px-8 py-6 text-base font-medium rounded-lg text-white border-2 border-white/30 bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-all duration-300"
                 >

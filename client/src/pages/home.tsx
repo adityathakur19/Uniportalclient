@@ -6,7 +6,6 @@ import ApplicationProcess from "@/components/home/application-process";
 import StudentLifeSection from "@/components/home/student-life-section";
 import TestimonialsSection from "@/components/home/testimonials-section";
 import ContactSection from "@/components/home/contact-section";
-import RegistrationModal from "@/components/registration/registration-modal";
 
 interface HomeProps {
   onApplyClick: () => void;
@@ -24,7 +23,6 @@ export default function Home({ onApplyClick, isModalOpen }: HomeProps) {
       <StudentLifeSection />
       <TestimonialsSection />
       <ContactSection />
-      <RegistrationModal isOpen={isModalOpen} onClose={onApplyClick} />
     </>
   );
 }

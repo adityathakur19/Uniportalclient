@@ -1,7 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useState } from "react";
+import ApplyModal from "../components/registration/apply-modal"; 
 
 export default function About() {
+  // Add state for modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Function to open the modal
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
   return (
     <div className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,7 +57,7 @@ export default function About() {
             </div>
             
             <div className="mt-8">
-              <Button variant="default" className="bg-gradient-primary">
+              <Button variant="default" className="bg-gradient-primary" onClick={handleOpenModal}>
                 Learn More About Our Services
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
@@ -115,6 +125,9 @@ export default function About() {
           </div>
         </div>
       </div>
+      
+      {/* Add the modal */}
+      <ApplyModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
   );
 }
